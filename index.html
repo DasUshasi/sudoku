@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sudoku</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="nunito-sans-text">
+    <div id="topPlate">
+        Choose your level
+        <br />
+        <button id="easy" class="button">Easy</button>
+        <button id="medium" class="button">Medium</button>
+        <button id="hard" class="button">Hard</button>
+    </div>
+    <div id="timer">
+        00 : 00
+    </div>
+    <div id="dropdown">
+        <label>
+            <input type="checkbox" name="candidate" id="candidateToggle" />
+            Candidate Mode
+        </label>
+        <div id="solveButton" class="button">Reveal puzzle</div>
+        <div id="revealButton" class="button">Reveal cell</div>
+        <div id="resetButton" class="button">Reset puzzle</div>
+    </div>
+    <div id="mainGrid">
+        <div class="grid">
+            <div id="box00" class="box"></div>
+            <div id="box01" class="box"></div>
+            <div id="box02" class="box"></div>
+            <div id="box10" class="box"></div>
+            <div id="box11" class="box"></div>
+            <div id="box12" class="box"></div>
+            <div id="box20" class="box"></div>
+            <div id="box21" class="box"></div>
+            <div id="box22" class="box"></div>
+        </div>
+        <div class="grid">
+            <div id="box03" class="box"></div>
+            <div id="box04" class="box"></div>
+            <div id="box05" class="box"></div>
+            <div id="box13" class="box"></div>
+            <div id="box14" class="box"></div>
+            <div id="box15" class="box"></div>
+            <div id="box23" class="box"></div>
+            <div id="box24" class="box"></div>
+            <div id="box25" class="box"></div>
+        </div>
+        <div class="grid">
+            <div id="box06" class="box"></div>
+            <div id="box07" class="box"></div>
+            <div id="box08" class="box"></div>
+            <div id="box16" class="box"></div>
+            <div id="box17" class="box"></div>
+            <div id="box18" class="box"></div>
+            <div id="box26" class="box"></div>
+            <div id="box27" class="box"></div>
+            <div id="box28" class="box"></div>
+        </div>
+        <div class="grid">
+            <div id="box30" class="box"></div>
+            <div id="box31" class="box"></div>
+            <div id="box32" class="box"></div>
+            <div id="box40" class="box"></div>
+            <div id="box41" class="box"></div>
+            <div id="box42" class="box"></div>
+            <div id="box50" class="box"></div>
+            <div id="box51" class="box"></div>
+            <div id="box52" class="box"></div>
+        </div>
+        <div class="grid">
+            <div id="box33" class="box"></div>
+            <div id="box34" class="box"></div>
+            <div id="box35" class="box"></div>
+            <div id="box43" class="box"></div>
+            <div id="box44" class="box"></div>
+            <div id="box45" class="box"></div>
+            <div id="box53" class="box"></div>
+            <div id="box54" class="box"></div>
+            <div id="box55" class="box"></div>
+        </div>
+        <div class="grid">
+            <div id="box36" class="box"></div>
+            <div id="box37" class="box"></div>
+            <div id="box38" class="box"></div>
+            <div id="box46" class="box"></div>
+            <div id="box47" class="box"></div>
+            <div id="box48" class="box"></div>
+            <div id="box56" class="box"></div>
+            <div id="box57" class="box"></div>
+            <div id="box58" class="box"></div>
+        </div>
+        <div class="grid">
+            <div id="box60" class="box"></div>
+            <div id="box61" class="box"></div>
+            <div id="box62" class="box"></div>
+            <div id="box70" class="box"></div>
+            <div id="box71" class="box"></div>
+            <div id="box72" class="box"></div>
+            <div id="box80" class="box"></div>
+            <div id="box81" class="box"></div>
+            <div id="box82" class="box"></div>
+        </div>
+        <div class="grid">
+            <div id="box63" class="box"></div>
+            <div id="box64" class="box"></div>
+            <div id="box65" class="box"></div>
+            <div id="box73" class="box"></div>
+            <div id="box74" class="box"></div>
+            <div id="box75" class="box"></div>
+            <div id="box83" class="box"></div>
+            <div id="box84" class="box"></div>
+            <div id="box85" class="box"></div>
+        </div>
+        <div class="grid">
+            <div id="box66" class="box"></div>
+            <div id="box67" class="box"></div>
+            <div id="box68" class="box"></div>
+            <div id="box76" class="box"></div>
+            <div id="box77" class="box"></div>
+            <div id="box78" class="box"></div>
+            <div id="box86" class="box"></div>
+            <div id="box87" class="box"></div>
+            <div id="box88" class="box"></div>
+        </div>
+    </div>
+    <div id="result">
+        You completed this sudoku puzzle!
+        <br />
+        <span id="timeTaken"></span>
+        <div id="reload" class="button" onclick="window.location.reload()">Play again</div>
+    </div>
+    <div id="resultRevealed">
+        Puzzle is solved!
+        <br />
+        <div id="reload" class="button" onclick="window.location.reload()">Play again</div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
