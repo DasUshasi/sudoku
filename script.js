@@ -13,8 +13,10 @@ let blanks = 0
 
 function checkWin() {
     if (blanks === 0) {
-        document.getElementById("result").style.display = "block"
         stopTimer()
+        setTimeout(() => {
+            document.getElementById("result").style.display = "block"
+        }, 2000);
     }
 }
 
@@ -39,8 +41,11 @@ function keyFunctions() {
     }
     for (let i = 0; i < boxes.length; i++) {
         boxes[i].addEventListener("click", function () {
+            if (lastClicked.length !== 0)
+                document.getElementById(lastClicked).classList.remove("active")
             let id = boxes[i].id
             lastClicked = id
+            boxes[i].classList.add("active")
             let j = id.charAt(3)
             let k = id.charAt(4)
             document.body.onkeydown = (e) => {
@@ -58,7 +63,6 @@ function keyFunctions() {
                             document.getElementById(id).textContent = key
                             document.getElementById(id).style.fontSize = 40 + "px"
                             finalBoard[j][k] = +key
-                            boxes[i].style.backgroundColor = "aliceblue"
                             let startRow = j - j % 3;
                             let startCol = k - k % 3;
                             for (let p = 0; p < 3; p++) {
@@ -88,9 +92,9 @@ function keyFunctions() {
                             checkWin()
                         }
                         else {
-                            boxes[i].style.backgroundColor = "red"
+                            boxes[i].classList.add("wrong")
                             setTimeout(() => {
-                                boxes[i].style.backgroundColor = "aliceblue"
+                                boxes[i].classList.remove("wrong")
                             }, 1500)
                         }
                     }
@@ -98,7 +102,6 @@ function keyFunctions() {
                         let id = j + "" + k + "" + 5
                         document.getElementById(id).textContent = ""
                         finalBoard[j][k] = 0
-                        boxes[i].style.backgroundColor = "aliceblue"
                         blanks++
                     }
                 }
@@ -221,10 +224,14 @@ document.getElementById("solveButton").addEventListener("click", () => {
         }
     }
     stopTimer()
-    document.getElementById("resultRevealed").style.display = "block"
+    setTimeout(() => {
+        document.getElementById("resultRevealed").style.display = "block"
+    }, 2000);
 })
 
 document.getElementById("revealButton").addEventListener("click", () => {
+    if (lastClicked.length === 0)
+        return
     let j = lastClicked.charAt(3)
     let k = lastClicked.charAt(4)
     if (isEditable[j][k]) {
