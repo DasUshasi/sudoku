@@ -138,3 +138,11 @@ label {
 #resultRevealed>div {
     margin-left: 15%;
 }
+
+.active {
+    background-color: #ff84c5;
+}
+
+.wrong {
+    background-color: red;
+}
